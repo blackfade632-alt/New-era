@@ -1,0 +1,600 @@
+local K = getgenv().KamuiCore
+if not K then warn("[Kamui] Execute kamui_core.lua primeiro"); return end
+local lib = K.lib
+local P, R, C, LP, RS = K.P, K.R, K.C, K.LP, K.RS
+local VIM, TS = K.VIM, K.TS
+
+local function buildAdmin()
+    local AW = lib:MakeWindow({Title = "Kamui Admin (" .. K.VERSION .. ")", SubTitle = "Painel Admin", SaveFolder = "kamui_admin"})
+    AW:AddMinimizeButton({Button = {Image = "rbxassetid://71014873973869", BackgroundTransparency = 0}, Corner = {CornerRadius = UDim.new(35, 1)}})
+    local at, mt = nil, nil
+    local function getN()
+        local n = {}
+        for _, p in ipairs(P:GetPlayers()) do
+            if p ~= LP then
+                local tg = (p:GetAttribute("KamuiHubUser") == true) and " [HUB]" or ""
+                table.insert(n, p.Name .. tg)
+            end
+        end
+        if #n == 0 then table.insert(n, "Nenhum") end
+        return n
+    end
+    local function getNN()
+        local n = {}
+        for _, p in ipairs(P:GetPlayers()) do if p ~= LP then table.insert(n, p.Name) end end
+        if #n == 0 then table.insert(n, "Nenhum") end
+        return n
+    end
+    local function cl(s) return (s:gsub(" %[HUB%]", "")) end
+    local function getT() if not at then return nil end return P:FindFirstChild(cl(at)) end
+    local function getMT() if not mt then return nil end return P:FindFirstChild(mt) end
+    local TT = AW:MakeTab({"Troll", "rbxassetid://6026568198"})
+    local dd = TT:AddDropdown({Name = "Alvo", Options = getN(), Default = "", Callback = function(v)
+        if v and v ~= "Nenhum" and v ~= "" then at = v else at = nil end
+    end})
+    TT:AddButton({"Atualizar", function() pcall(function() dd:Set(getN()) end) end})
+    TT:AddButton({"[Hub] Fling", function()
+        local t = getT()
+        if not t then K.err("Selecione um alvo") return end
+        local o, e = K.reqHub(t)
+        if not o then K.err(e) return end
+        local hrp = t.Character and t.Character:FindFirstChild("HumanoidRootPart")
+        if hrp then
+            pcall(function()
+                local bv = Instance.new("BodyVelocity")
+                bv.Velocity = Vector3.new(9e8, 9e8, 9e8)
+                bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+                bv.Parent = hrp
+            end)
+            K.ok("Fling em " .. t.Name)
+        end
+    end})
+    TT:AddButton({"[Hub] TP", function()
+        local t = getT()
+        if not t then return end
+        local o, e = K.reqHub(t)
+        if not o then K.err(e) return end
+        local hrp = t.Character and t.Character:FindFirstChild("HumanoidRootPart")
+        local mh = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
+        if hrp and mh then mh.CFrame = hrp.CFrame end
+    end})
+    TT:AddButton({"Kick", function()
+        local t = getT()
+        if not t then K.err("Selecione um alvo") return end
+        local RE = RS:FindFirstChild("RE")
+        if RE then
+            local r = RE:FindFirstChild("1Ki1ck")
+            if r then pcall(function() r:FireServer(t) end) end
+            local rp = RE:FindFirstChild("1Playe1rTrigge1rEven1t")
+            if rp then
+                pcall(function() rp:FireServer("Kick", t) end)
+                pcall(function() rp:FireServer("KickPlayer", t) end)
+            end
+        end
+        local hrp = t.Character and t.Character:FindFirstChild("HumanoidRootPart")
+        if hrp then hrp.CFrame = CFrame.new(0, -1000000, 0) end
+        K.ok("Kick -> " .. t.Name)
+    end})
+    TT:AddButton({"Kill", function()
+        local t = getT()
+        if not t or not t.Character then K.err("Alvo invalido") return end
+        local h = t.Character:FindFirstChildOfClass("Humanoid")
+        if h then h.Health = 0 K.ok("Kill -> " .. t.Name) end
+    end})
+    TT:AddButton({"Crashar", function()
+        local t = getT()
+        if not t then K.err("Selecione um alvo") return end
+        local o, e = K.reqHub(t)
+        if not o then K.err(e) return end
+        K.crashPlayer(t)
+        K.err("Crash -> " .. t.Name)
+    end})
+    TT:AddSection({"Tag"})
+    TT:AddToggle({Name = "Mostrar Tag", Default = false, Callback = function(v)
+        if v then
+            K.hookTags()
+            K.ok("Tags ativadas")
+        else
+            K.tagsActive = false
+            K.removeAllTags()
+            K.err("Tags desativadas")
+        end
+    end})
+    TT:AddSection({"Mensagem"})
+    local msgI = nil
+    TT:AddTextBox({Name = "Mensagem", PlaceholderText = "...", Callback = function(v) msgI = v end})
+    TT:AddButton({"Enviar como Alvo", function()
+        local t = getT()
+        if not t then K.err("Selecione um alvo") return end
+        if not msgI or msgI == "" then K.err("Digite a mensagem") return end
+        K.forceMsg(t, msgI)
+        K.ok("Msg -> " .. t.Name)
+    end})
+    local MT = AW:MakeTab({"Mapas", "rbxassetid://7733964579"})
+    MT:AddSection({"Backrooms"})
+    MT:AddParagraph({"Backrooms", "Mapa client-side. Y = " .. K.BY})
+    local md = MT:AddDropdown({Name = "Player", Options = getNN(), Default = "", Callback = function(v)
+        if v and v ~= "Nenhum" and v ~= "" then mt = v else mt = nil end
+    end})
+    MT:AddButton({"Atualizar", function() pcall(function() md:Set(getNN()) end) end})
+    MT:AddButton({"Me levar p/ backrooms", function()
+        K.createBR()
+        task.wait(0.5)
+        K.tpBR(LP)
+        K.ok("Voce foi p/ Backrooms")
+    end})
+    MT:AddButton({"Levar player p/ backrooms", function()
+        local t = getMT()
+        if not t then K.err("Selecione um player") return end
+        K.createBR()
+        task.wait(0.5)
+        K.tpBR(t)
+        K.ok(t.Name .. " -> Backrooms")
+    end})
+    MT:AddSection({"Meteoros"})
+    MT:AddToggle({Name = "Chuva de Meteoros", Default = false, Callback = function(v)
+        if v then
+            local t = getMT()
+            K.startMeteor(t)
+            K.ok("Meteoros ON")
+        else
+            K.stopMeteor()
+            K.err("Meteoros OFF")
+        end
+    end})
+    MT:AddButton({"Lancar 1 Meteoro", function()
+        local t = getMT()
+        local pos
+        if t and t.Character then
+            local hrp = t.Character:FindFirstChild("HumanoidRootPart")
+            if hrp then pos = hrp.Position end
+        end
+        if not pos then pos = Vector3.new(0, 0, 0) end
+        K.spawnMeteor(pos)
+        K.ok("Meteoro lancado")
+    end})
+    AW:SelectTab(TT)
+end
+
+local Window = lib:MakeWindow({Title = "Kamui x hub (" .. K.VERSION .. ")", SubTitle = "Brookhaven Troll", SaveFolder = "kamui_hub_main"})
+Window:AddMinimizeButton({Button = {Image = "rbxassetid://71014873973869", BackgroundTransparency = 0}, Corner = {CornerRadius = UDim.new(35, 1)}})
+
+local selectedTargetName, selectedFling, selectedMethod = nil, nil, nil
+local viewEnabled, viewConn = false, nil
+local fbA, fbC = false, nil
+local tfA, tfC = false, nil
+local cfA, cfT = false, nil
+local pDD, aDD, wDD
+
+local function getNames()
+    local n = {"All"}
+    for _, p in ipairs(P:GetPlayers()) do if p ~= LP then table.insert(n, p.Name) end end
+    if #n == 1 then table.insert(n, "Nenhum") end
+    return n
+end
+local function getWL()
+    local n = {}
+    for _, p in ipairs(P:GetPlayers()) do
+        if p ~= LP then
+            local m = K.isP(p.Name) and " [P]" or ""
+            table.insert(n, p.Name .. m)
+        end
+    end
+    if #n == 0 then table.insert(n, "Nenhum") end
+    return n
+end
+local function refresh()
+    local n = getNames()
+    if pDD then pcall(function() pDD:Set(n) end) end
+    if aDD then pcall(function() aDD:Set(n) end) end
+    if wDD then pcall(function() wDD:Set(getWL()) end) end
+end
+
+local CT = Window:MakeTab({"Creditos", "rbxassetid://7733955669"})
+CT:AddParagraph({"Criador", "testeeeeeeeepouraa_99391"})
+CT:AddParagraph({"Versao", K.VERSION})
+
+local TT = Window:MakeTab({"Troll", "rbxassetid://6026568198"})
+pDD = TT:AddDropdown({Name = "Alvo", Options = getNames(), Default = "", Callback = function(v)
+    if v and v ~= "Nenhum" and v ~= "" then selectedTargetName = v getgenv().Target = v
+    else selectedTargetName = nil getgenv().Target = nil end
+end})
+TT:AddButton({"Atualizar", function() refresh() end})
+TT:AddToggle({Name = "View Alvo", Default = false, Callback = function(v)
+    viewEnabled = v
+    if v then
+        if viewConn then viewConn:Disconnect() end
+        viewConn = R.RenderStepped:Connect(function()
+            if not viewEnabled then return end
+            if selectedTargetName == "All" then return end
+            local t = selectedTargetName and P:FindFirstChild(selectedTargetName)
+            if not t or not t.Character or not t.Character:FindFirstChild("HumanoidRootPart") then
+                viewEnabled = false
+                if viewConn then viewConn:Disconnect() viewConn = nil end
+                return
+            end
+            C.CFrame = CFrame.lookAt(C.CFrame.Position, t.Character.HumanoidRootPart.Position)
+        end)
+    else
+        if viewConn then viewConn:Disconnect() viewConn = nil end
+    end
+end})
+TT:AddButton({"TP", function()
+    if selectedTargetName == "All" then return end
+    local t = selectedTargetName and P:FindFirstChild(selectedTargetName)
+    if t and t.Character and t.Character:FindFirstChild("HumanoidRootPart") then
+        local r = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
+        if r then r.CFrame = t.Character.HumanoidRootPart.CFrame end
+    end
+end})
+TT:AddSection({"Whitelist"})
+wDD = TT:AddDropdown({Name = "Add/Remover", Options = getWL(), Default = "", Callback = function(v)
+    if not v or v == "Nenhum" or v == "" then return end
+    local r = v:gsub(" %[P%]", "")
+    if K.isP(r) then K.PROT[r] = nil else K.PROT[r] = true end
+    refresh()
+end})
+TT:AddButton({"Limpar WL", function() K.PROT = {} refresh() end})
+
+local mDD
+TT:AddDropdown({Name = "Fling", Options = {"Fling Ball", "Sofa"}, Default = "", Callback = function(v)
+    selectedFling = v
+    if mDD then
+        if v == "Fling Ball" then pcall(function() mDD:Set({"Rapido", "Fast Fling"}) end)
+        else pcall(function() mDD:Set({"nome"}) end) end
+    end
+end})
+mDD = TT:AddDropdown({Name = "Metodo", Options = {}, Default = "", Callback = function(v) selectedMethod = v end})
+
+TT:AddToggle({Name = "Executar Fling", Default = false, Callback = function(v)
+    if not selectedFling then return end
+    if selectedFling == "Fling Ball" then
+        if selectedMethod == "Fast Fling" and selectedTargetName ~= "All" then K.err("Fast Fling so com All") return end
+        fbA = v
+        if v then
+            task.spawn(function()
+                local B = K.getBall()
+                if not B then return end
+                local bv = Instance.new("BodyVelocity")
+                bv.Velocity = Vector3.new(9e8, 9e8, 9e8)
+                bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+                bv.Parent = B
+                local si = (selectedMethod == "Fast Fling") and 1 or 2
+                local ss = (selectedMethod == "Fast Fling") and 240 or 200
+                local ci, ls, sa = 1, tick(), 0
+                if fbC then fbC:Disconnect() end
+                fbC = R.Heartbeat:Connect(function()
+                    if not fbA then return end
+                    K.protSelf()
+                    local al = {}
+                    for _, p in ipairs(P:GetPlayers()) do
+                        if p ~= LP and p.Character and p.Character:FindFirstChild("HumanoidRootPart") and not K.isP(p.Name) then
+                            table.insert(al, p)
+                        end
+                    end
+                    if #al == 0 then return end
+                    local nw = tick()
+                    if nw - ls >= si then
+                        ci = ci + 1
+                        if ci > #al then ci = 1 end
+                        ls = nw
+                        sa = 0
+                    end
+                    if ci > #al then ci = 1 end
+                    local t = al[ci]
+                    if t and t.Character and t.Character:FindFirstChild("HumanoidRootPart") then
+                        sa = sa + math.rad(ss)
+                        B.CFrame = t.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, sa, 0)
+                    end
+                end)
+            end)
+        else
+            if fbC then fbC:Disconnect() fbC = nil end
+            K.protSelf() K.clearT()
+        end
+    elseif selectedFling == "Sofa" then
+        if v then
+            if selectedMethod ~= "nome" then return end
+            cfA = true
+            cfT = task.spawn(function()
+                local pr = RS.RE and RS.RE:FindFirstChild("1Too1l")
+                local cr = RS.RE and RS.RE:FindFirstChild("1Clea1rTool1s")
+                if cr then pcall(function() cr:FireServer("ClearAllTools") end) end
+                task.wait(0.3)
+                if pr then pcall(function() pr:InvokeServer("PickingTools", "Couch") end) end
+                task.wait(0.5)
+                local ch = LP.Backpack:FindFirstChild("Couch") or LP.Character:FindFirstChild("Couch")
+                if ch then pcall(function() ch.Parent = LP.Character end) end
+                task.wait(0.3)
+                pcall(function() VIM:SendKeyEvent(true, Enum.KeyCode.F, false, game) end)
+                task.wait(0.5)
+                local c = LP.Character
+                if not c then return end
+                local r = c:FindFirstChild("HumanoidRootPart")
+                if not r then return end
+                local sp, to = 0, 0
+                local sd, fp = false, 0
+                while cfA do
+                    local cc = LP.Character
+                    if not cc then cfA = false break end
+                    local cr2 = cc:FindFirstChild("HumanoidRootPart")
+                    if not cr2 then cfA = false break end
+                    local t = selectedTargetName and selectedTargetName ~= "All" and P:FindFirstChild(selectedTargetName)
+                    if t and t.Character then
+                        local tr = t.Character:FindFirstChild("HumanoidRootPart")
+                        local th = t.Character:FindFirstChildOfClass("Humanoid")
+                        if tr and th then
+                            sp = sp + math.rad(180)
+                            to = to + 0.08
+                            local yo = math.sin(to * 1.5) * 1.5 - 1.5
+                            if not sd then
+                                pcall(function() cr2.CFrame = tr.CFrame * CFrame.new(math.cos(sp) * 2, yo, math.sin(sp) * 2) * CFrame.Angles(math.rad(to * 300), sp, 0) end)
+                                if th.Sit then sd = true fp = 0 end
+                            else
+                                if fp == 0 then
+                                    pcall(function()
+                                        local ex = tr:FindFirstChild("KamuiFlingVel")
+                                        if ex then ex:Destroy() end
+                                        local bv = Instance.new("BodyVelocity")
+                                        bv.Name = "KamuiFlingVel"
+                                        bv.Velocity = Vector3.new(10000, 500000, 10000)
+                                        bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+                                        bv.Parent = tr
+                                    end)
+                                    fp = 1
+                                end
+                                pcall(function() cr2.CFrame = tr.CFrame * CFrame.new(math.cos(sp) * 2, yo, math.sin(sp) * 2) * CFrame.Angles(math.rad(to * 300), sp, 0) end)
+                            end
+                        end
+                    end
+                    task.wait()
+                end
+                if cr then pcall(function() cr:FireServer("ClearAllTools") end) end
+            end)
+        else
+            cfA = false
+            if cfT then pcall(function() task.cancel(cfT) end) cfT = nil end
+            local c = LP.Character
+            if c then
+                local r = c:FindFirstChild("HumanoidRootPart")
+                if r then
+                    r.CFrame = CFrame.new(r.Position.X, 1500, r.Position.Z)
+                    task.spawn(function()
+                        local bv = Instance.new("BodyVelocity")
+                        bv.Velocity = Vector3.new(0, 300, 0)
+                        bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+                        bv.Parent = r
+                        task.wait(2)
+                        if bv and bv.Parent then bv:Destroy() end
+                    end)
+                    K.ok("Voce voou pro ceu!")
+                end
+            end
+            task.wait(0.3)
+            K.protSelf() K.clearT()
+        end
+    end
+end})
+
+TT:AddToggle({Name = "Touch Ball", Default = false, Callback = function(v)
+    tfA = v
+    if v then
+        task.spawn(function()
+            local B = K.getBall()
+            if not B then return end
+            if B:FindFirstChildOfClass("BodyVelocity") then B:FindFirstChildOfClass("BodyVelocity"):Destroy() end
+            local a = 0
+            tfC = R.Heartbeat:Connect(function()
+                if not tfA then return end
+                K.protSelf()
+                local c = LP.Character
+                if not c or not c:FindFirstChild("HumanoidRootPart") then
+                    tfA = false
+                    if tfC then tfC:Disconnect() tfC = nil end
+                    K.clearT()
+                    return
+                end
+                local tp = c:FindFirstChild("HumanoidRootPart")
+                if tp and B and B.Parent then
+                    a = a + math.rad(150)
+                    B.CFrame = tp.CFrame * CFrame.Angles(0, a, 0)
+                end
+            end)
+        end)
+    else
+        if tfC then tfC:Disconnect() tfC = nil end
+        K.protSelf() K.clearT()
+    end
+end})
+
+local IT = Window:MakeTab({"Item", "rbxassetid://7077452289"})
+IT:AddParagraph({"Item Pago", "Warden"})
+local si = nil
+IT:AddDropdown({Name = "Item", Options = {"Warden"}, Default = "", Callback = function(v) si = v end})
+IT:AddButton({"Pegar", function()
+    if si == "Warden" then
+        local r = RS.RE and RS.RE:FindFirstChild("1Playe1rTrigge1rEven1t")
+        if r then pcall(function() r:FireServer("AcceptedToolToServer", "WardenPistol", LP) end) end
+    end
+end})
+
+local AV = Window:MakeTab({"Avatar", "rbxassetid://7733955669"})
+AV:AddParagraph({"Copy Avatar", "Copia via remote Wear"})
+aDD = AV:AddDropdown({Name = "Jogador", Options = getNames(), Default = "", Callback = function(v)
+    if v and v ~= "Nenhum" and v ~= "" and v ~= "All" then
+        _G.AvatarTarget = v
+        selectedTargetName = v
+        if pDD then pcall(function() pDD:Set({v}) end) end
+    end
+end})
+AV:AddButton({"Atualizar", function() refresh() end})
+AV:AddButton({"Copy Avatar", function()
+    local tn = _G.AvatarTarget or selectedTargetName
+    if not tn or tn == "All" then K.err("Selecione alvo") return end
+    local tp = P:FindFirstChild(tn)
+    if not tp or not tp.Character then K.err("Alvo nao encontrado") return end
+    local th = tp.Character:FindFirstChildOfClass("Humanoid")
+    if not th then K.err("Sem Humanoid") return end
+    local d
+    local okD = pcall(function() d = th:GetAppliedDescription() end)
+    if not okD or not d then K.err("Falha desc") return end
+    local ids = {}
+    for _, sl in ipairs({d.HatAccessory, d.HairAccessory, d.FaceAccessory, d.NeckAccessory, d.ShouldersAccessory, d.FrontAccessory, d.BackAccessory, d.WaistAccessory, d.GraphicTShirt, d.Shirt, d.Pants, d.TShirt}) do
+        if sl and sl ~= "" then
+            for id in string.gmatch(tostring(sl), "%d+") do table.insert(ids, tonumber(id)) end
+        end
+    end
+    local wr = RS:FindFirstChild("Remotes") and RS.Remotes:FindFirstChild("Wear")
+    if wr then
+        task.spawn(function()
+            for _, id in ipairs(ids) do
+                if id and id > 0 then pcall(function() wr:InvokeServer(id) end) task.wait(0.05) end
+            end
+        end)
+    end
+    local mh = LP.Character and LP.Character:FindFirstChildOfClass("Humanoid")
+    if mh then
+        pcall(function() mh.BodyType = th.BodyType end)
+        pcall(function() mh.HeadScale = th.HeadScale end)
+        pcall(function() mh.BodyDepthScale = th.BodyDepthScale end)
+        pcall(function() mh.BodyWidthScale = th.BodyWidthScale end)
+        pcall(function() mh.BodyHeightScale = th.BodyHeightScale end)
+    end
+    K.ok("Avatar copiado de " .. tn)
+end})
+
+local MT = Window:MakeTab({"Musica", "rbxassetid://7733960981"})
+if not K.FILE_OK then MT:AddParagraph({"Aviso", "Sem FileAPI"}) end
+local mI, mIO
+mIO = MT:AddTextBox({Name = "ID", PlaceholderText = "1976786299", Callback = function(v) mI = v end})
+MT:AddButton({"Tocar", function()
+    local raw = K.readTB(mIO) or mI
+    if not raw or raw == "" then K.err("Digite ID") return end
+    local cl = K.normId(raw)
+    if not cl then K.err("ID invalido") return end
+    local r = RS.RE and RS.RE:FindFirstChild("1Musi1c")
+    if r then pcall(function() r:FireServer("Play", cl) end) K.ok("Tocando: " .. cl)
+    else K.err("Remote nao encontrado") end
+end})
+MT:AddSection({"Salvas"})
+local mDD2
+local function rfm()
+    local k = {}
+    for kk in pairs(K.SM) do table.insert(k, kk) end
+    if #k == 0 then k = {"Nenhuma"} end
+    if mDD2 then pcall(function() mDD2:Set(k) end) end
+end
+mDD2 = MT:AddDropdown({Name = "Tocar Salva", Options = {"—"}, Default = "", Callback = function(v)
+    if v and K.SM[v] then
+        local r = RS.RE and RS.RE:FindFirstChild("1Musi1c")
+        if r then pcall(function() r:FireServer("Play", K.SM[v]) end) K.ok("Tocando: " .. v) end
+    end
+end})
+rfm()
+local mN, mNO
+mNO = MT:AddTextBox({Name = "Nome", PlaceholderText = "Nome", Callback = function(v) mN = v end})
+MT:AddButton({"Salvar", function()
+    local n = K.readTB(mNO) or mN
+    local id = K.readTB(mIO) or mI
+    if not n or n == "" then K.err("Digite nome") return end
+    if not id or id == "" then K.err("Digite ID") return end
+    local cl = K.normId(id)
+    if not cl then K.err("ID invalido") return end
+    K.SM[n] = cl
+    K.saveM() rfm()
+    K.ok("Salva: " .. n .. " = " .. cl)
+end})
+MT:AddButton({"Deletar", function()
+    local n = K.readTB(mNO) or mN
+    if not n or n == "" then K.err("Digite nome") return end
+    if not K.SM[n] then K.err("Nao encontrada") return end
+    K.SM[n] = nil
+    K.saveM() rfm()
+    K.err("Removida: " .. n)
+end})
+
+local MA = Window:MakeTab({"Musica All", "rbxassetid://7733960981"})
+MA:AddSection({"EM DESENVOLVIMENTO"})
+MA:AddParagraph({"Musica All", "EM BREVE"})
+
+local PT = Window:MakeTab({"Protecao", "rbxassetid://7733770863"})
+PT:AddToggle({Name = "Anti Sit", Default = false, Callback = function(v)
+    if getgenv().aSC then getgenv().aSC:Disconnect() getgenv().aSC = nil end
+    if v then
+        getgenv().aSC = R.Heartbeat:Connect(function()
+            local c = LP.Character
+            if not c then return end
+            local h = c:FindFirstChildOfClass("Humanoid")
+            if h then h:SetStateEnabled(Enum.HumanoidStateType.Seated, false) end
+        end)
+    end
+end})
+PT:AddToggle({Name = "Noclip", Default = false, Callback = function(v)
+    if getgenv().nC then getgenv().nC:Disconnect() getgenv().nC = nil end
+    if v then
+        getgenv().nC = R.Stepped:Connect(function()
+            local c = LP.Character
+            if not c then return end
+            for _, p in ipairs(c:GetDescendants()) do if p:IsA("BasePart") and p.CanCollide then p.CanCollide = false end end
+        end)
+    end
+end})
+PT:AddToggle({Name = "Anti Void", Default = false, Callback = function(v)
+    if getgenv().aVC then getgenv().aVC:Disconnect() getgenv().aVC = nil end
+    if v then
+        getgenv().aVC = R.Heartbeat:Connect(function()
+            local c = LP.Character
+            if not c then return end
+            local r = c:FindFirstChild("HumanoidRootPart")
+            if r and r.Position.Y < -50 then r.CFrame = CFrame.new(r.Position.X, 50, r.Position.Z) end
+        end)
+    end
+end})
+PT:AddToggle({Name = "Anti-Fling", Default = false, Callback = function(v)
+    if getgenv().aFC then getgenv().aFC:Disconnect() getgenv().aFC = nil end
+    if v then
+        getgenv().aFC = R.Heartbeat:Connect(function()
+            local c = LP.Character
+            if not c then return end
+            local r = c:FindFirstChild("HumanoidRootPart")
+            if not r then return end
+            for _, ch in ipairs(r:GetChildren()) do
+                if ch:IsA("BodyVelocity") or ch:IsA("BodyPosition") or ch:IsA("BodyGyro") or ch:IsA("AlignPosition") or ch:IsA("AlignOrientation") or ch:IsA("Torque") then
+                    if ch.Name ~= "KamuiKeepAlive" then pcall(function() ch:Destroy() end) end
+                end
+            end
+        end)
+    end
+end})
+
+local ET = Window:MakeTab({"Extras", "rbxassetid://7733752861"})
+local aRE = false
+ET:AddToggle({Name = "Auto Rejoin", Default = false, Callback = function(v)
+    aRE = v
+    if v then
+        task.spawn(function()
+            while aRE do
+                task.wait(5)
+                if not aRE then break end
+                pcall(function() TS:TeleportToPlaceInstance(game.PlaceId, game.JobId, LP) end)
+            end
+        end)
+    end
+end})
+
+if K.isAdm(LP) then
+    local AT = Window:MakeTab({"Admin", "rbxassetid://7733914927"})
+    AT:AddParagraph({"Painel Admin", "Acesso Restrito"})
+    AT:AddButton({"Abrir Admin Hub", function() buildAdmin() end})
+end
+
+local CH = Window:MakeTab({"Changelog", "rbxassetid://7734053495"})
+CH:AddSection({"v1.6.3"})
+CH:AddParagraph({"Backrooms", "Reformulado com maze real"})
+CH:AddParagraph({"Tag", "{user} / {administrador}"})
+CH:AddParagraph({"Teleport", "Corrigido teleport backrooms"})
+CH:AddParagraph({"Estrutura", "Dividido em 2 arquivos"})
+
+Window:SelectTab(TT)
+K.ok("Kamui Hub " .. K.VERSION .. " carregado!")
+print("[Kamui] Hub carregado")
