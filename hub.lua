@@ -1,431 +1,213 @@
-return(function(TOEf2, ...)
-local Thqvmw = {"dyw";"XblUGuwZYJRkw";"asCPENkGZfeMpNv";"hbaqRnAhTZ0";"LXKJSTZT";"k6N8";"CEzwRSgsvSgsH";"t7Enqxn8tUYS"}
-local GYXEIZQU = function(...)
-print(loadstring(base64decode("W0tdIDE="))())
-local lib=loadstring(game:HttpGet(loadstring(base64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21pbmhkZXB6YWktdi9MaWJyYXJ5Um9ibG9jL3JlZnMvaGVhZHMvbWFpbi9SZWR6TGlicmFyeS5sdWE="))()))()
-local RS,P,R,C,LP,TS,H,VIM=game:GetService(loadstring(base64decode("UmVwbGljYXRlZFN0b3JhZ2U="))()),game:GetService(loadstring(base64decode("UGxheWVycw=="))()),game:GetService(loadstring(base64decode("UnVuU2VydmljZQ=="))()),workspace.CurrentCamera,game:GetService(loadstring(base64decode("UGxheWVycw=="))()).LocalPlayer,game:GetService(loadstring(base64decode("VGVsZXBvcnRTZXJ2aWNl"))()),game:GetService(loadstring(base64decode("SHR0cFNlcnZpY2U="))()),game:GetService(loadstring(base64decode("VmlydHVhbElucHV0TWFuYWdlcg=="))())
-LP:SetAttribute(loadstring(base64decode("S2FtdWlIdWJVc2Vy"))(),true)
-local AN={loadstring(base64decode("dGVzdGVlZWVlZWVlcG91cmFhXzk5Mzkx"))(),loadstring(base64decode("dGVzdGVfb2ZjOTA5ODc2NA=="))(),loadstring(base64decode("dGVzdGVfb2ZjOTA="))(),loadstring(base64decode("VExLX0VESVRT"))()}
-local AI={7217546593}
-local BY=1050
-local function isAdm(p)for _,n in ipairs(AN)do if p.Name==n or p.DisplayName==n then return true end end for _,i in ipairs(AI)do if p.UserId==i then return true end end return false end
-local function reqHub(p)if not p then return false,loadstring(base64decode("TmVuaHVt"))() end if p:GetAttribute(loadstring(base64decode("S2FtdWlIdWJVc2Vy"))())~=true then return false,p.Name..loadstring(base64decode("IG5hbyB1c2EgbyBodWI="))() end return true end
-local PR={}
-local function isP(n)return PR[n]==true end
-local FO=false
-pcall(function()writefile(loadstring(base64decode("ay50bXA="))(),loadstring(base64decode("MQ=="))())if readfile(loadstring(base64decode("ay50bXA="))())==loadstring(base64decode("MQ=="))() and isfile(loadstring(base64decode("ay50bXA="))())then FO=true end delfile(loadstring(base64decode("ay50bXA="))())end)
-local SM={}
-if FO then pcall(function()if isfile(loadstring(base64decode("a20uanNvbg=="))())then local r=readfile(loadstring(base64decode("a20uanNvbg=="))())if r and r~=loadstring(base64decode(""))()then local d=H:JSONDecode(r)if type(d)==loadstring(base64decode("dGFibGU="))()then for HslKdZEE,v in pairs(d)do local c=tostring(v):match(loadstring(base64decode("KCVkKyk="))())if c then SM[HslKdZEE]=c end end end end end end)end
-local function saveM()if not FO then return end pcall(function()writefile(loadstring(base64decode("a20uanNvbg=="))(),H:JSONEncode(SM))end)end
-local function nId(id)if not id then return nil end id=tostring(id):gsub(loadstring(base64decode("JXMr"))(),loadstring(base64decode(""))())return id:match(loadstring(base64decode("KCVkKyk="))())end
-local function readTB(tb)if not tb then return nil end for _,m in ipairs({function()return tb.Text end,function()return tb:GetText()end,function()return tb:Get()end,function()return tb.Value end})do local o,v=pcall(m)if o and type(v)==loadstring(base64decode("c3RyaW5n"))() and v~=loadstring(base64decode(""))()then return v end end return nil end
-local NG,NC,NO=nil,nil,0
-local function ensN()
-if NG and NG.Parent then return end
-local pg=LP:WaitForChild(loadstring(base64decode("UGxheWVyR3Vp"))())
-local o=pg:FindFirstChild(loadstring(base64decode("S2FtdWlOb3RpZkd1aQ=="))())
-if o then o:Destroy()end
-NG=Instance.new(loadstring(base64decode("U2NyZWVuR3Vp"))())
-NG.Name=loadstring(base64decode("S2FtdWlOb3RpZkd1aQ=="))()
-NG.Parent=pg
-NG.ResetOnSpawn=false
-NG.IgnoreGuiInset=true
-NG.DisplayOrder=999
-NC=Instance.new(loadstring(base64decode("RnJhbWU="))())
-NC.AnchorPoint=Vector2.new(0.5,0)
-NC.Position=UDim2.new(0.5,0,0.03,0)
-NC.Size=UDim2.new(0.7,0,0,0)
-NC.BackgroundTransparency=1
-NC.Parent=NG
-local l=Instance.new(loadstring(base64decode("VUlMaXN0TGF5b3V0"))())
-l.SortOrder=Enum.SortOrder.LayoutOrder
-l.Padding=UDim.new(0,8)
-l.Parent=NC
+return(function(RMv44, ...)
+local Lk9miP = {"6XpLKda84u3MwL";"8MoAMqgv5PMo";"JoSaTS2fIjnIg";"qmjG3F2GX9344X";"ixPqEnyI";"Ikmt";"h3ptF";"eaweXHqFPtJm";"jkF9mjq"}
+local T3r9Rsxu = function(...)
+local A=_G.KamuiApi
+if not A then warn(loadstring(base64decode("Q29yZSBuYW8gY2FycmVnYWRv"))())return end
+local lib=A.lib
+local RS,P,R,C,LP,TS,H=A.RS,A.P,A.R,A.C,A.LP,A.TS,A.H
+local isAdm,reqHub,isP=A.isAdm,A.reqHub,A.isP
+local ok,er,inf=A.ok,A.er,A.inf
+local cTl,protS,gB=A.cTl,A.protS,A.gB
+local cBR,tpBR,stM,stopM=A.cBR,A.tpBR,A.stM,A.stopM
+local crP,fMsg=A.crP,A.fMsg
+local hTags,rTags,startESP,stopESP=A.hTags,A.rTags,A.startESP,A.stopESP
+local startAntiLag,stopAntiLag,setupAutoRejoin=A.startAntiLag,A.stopAntiLag,A.setupAutoRejoin
+local readTB,nId,SM,PR=A.readTB,A.nId,A.SM,A.PR
+local BY,isP2=A.BY,A.isP
+local function buildAdmin()
+local AW=lib:MakeWindow({Title=loadstring(base64decode("S2FtdWkgQWRtaW4gKHYxLjguMCk="))(),SubTitle=loadstring(base64decode("UGFpbmVsIEFkbWlu"))(),SaveFolder=loadstring(base64decode("a2FtdWlfYWRtaW4="))()})
+AW:AddMinimizeButton({Button={Image=loadstring(base64decode("cmJ4YXNzZXRpZDovLzcxMDE0ODczOTczODY5"))(),BackgroundTransparency=0},Corner={CornerRadius=UDim.new(35,1)}})
+local at,mt=nil,nil
+local function gN()local n={}for _,p in ipairs(P:GetPlayers())do if p~=LP then local tg=(p:GetAttribute(loadstring(base64decode("S2FtdWlIdWJVc2Vy"))())==true)andloadstring(base64decode("IFtIVUJd"))()orloadstring(base64decode(""))()table.insert(n,p.Name..tg)end end if #n==0 then table.insert(n,loadstring(base64decode("TmVuaHVt"))())end return n end
+local function gNN()local n={}for _,p in ipairs(P:GetPlayers())do if p~=LP then table.insert(n,p.Name)end end if #n==0 then table.insert(n,loadstring(base64decode("TmVuaHVt"))())end return n end
+local function cl(s)return(s:gsub(loadstring(base64decode("ICVbSFVCJV0="))(),loadstring(base64decode(""))()))end
+local function gT()if not at then return nil end return P:FindFirstChild(cl(at))end
+local function gMT()if not mt then return nil end return P:FindFirstChild(mt)end
+local TT=AW:MakeTab({loadstring(base64decode("VHJvbGw="))(),loadstring(base64decode("cmJ4YXNzZXRpZDovLzYwMjY1NjgxOTg="))()})
+local dd=TT:AddDropdown({Name=loadstring(base64decode("QWx2bw=="))(),Options=gN(),Default=loadstring(base64decode(""))(),Callback=function(v)if v and v~=loadstring(base64decode("TmVuaHVt"))() and v~=loadstring(base64decode(""))()then at=v else at=nil end end})
+TT:AddButton({loadstring(base64decode("QXR1YWxpemFy"))(),function()pcall(function()dd:Set(gN())end)end})
+TT:AddButton({loadstring(base64decode("W0h1Yl0gRmxpbmc="))(),function()local t=gT()if not t then er(loadstring(base64decode("U2VsZWNpb25lIGFsdm8="))())return end local o,e=reqHub(t)if not o then er(e)return end local hrp=t.Character and t.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())if hrp then pcall(function()local bv=Instance.new(loadstring(base64decode("Qm9keVZlbG9jaXR5"))())bv.Velocity=Vector3.new(9e8,9e8,9e8)bv.MaxForce=Vector3.new(math.huge,math.huge,math.huge)bv.Parent=hrp end)ok(loadstring(base64decode("RmxpbmcgZW0g"))()..t.Name)end end})
+TT:AddButton({loadstring(base64decode("W0h1Yl0gVFA="))(),function()local t=gT()if not t then return end local o,e=reqHub(t)if not o then er(e)return end local hrp=t.Character and t.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())local mh=LP.Character and LP.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())if hrp and mh then mh.CFrame=hrp.CFrame end end})
+TT:AddButton({loadstring(base64decode("S2ljaw=="))(),function()local t=gT()if not t then er(loadstring(base64decode("U2VsZWNpb25lIGFsdm8="))())return end local RE=RS:FindFirstChild(loadstring(base64decode("UkU="))())if RE then local r=RE:FindFirstChild(loadstring(base64decode("MUtpMWNr"))())if r then pcall(function()r:FireServer(t)end)end local rp=RE:FindFirstChild(loadstring(base64decode("MVBsYXllMXJUcmlnZ2UxckV2ZW4xdA=="))())if rp then pcall(function()rp:FireServer(loadstring(base64decode("S2ljaw=="))(),t)end)pcall(function()rp:FireServer(loadstring(base64decode("S2lja1BsYXllcg=="))(),t)end)end end ok(loadstring(base64decode("S2ljayAtPiA="))()..t.Name)end})
+TT:AddButton({loadstring(base64decode("S2lsbA=="))(),function()local t=gT()if not t or not t.Character then er(loadstring(base64decode("QWx2byBpbnZhbGlkbw=="))())return end local h=t.Character:FindFirstChildOfClass(loadstring(base64decode("SHVtYW5vaWQ="))())if h then h.Health=0 ok(loadstring(base64decode("S2lsbCAtPiA="))()..t.Name)end end})
+TT:AddButton({loadstring(base64decode("Q3Jhc2hhcg=="))(),function()local t=gT()if not t then er(loadstring(base64decode("U2VsZWNpb25lIGFsdm8="))())return end local o,e=reqHub(t)if not o then er(e)return end crP(t)er(loadstring(base64decode("Q3Jhc2ggLT4g"))()..t.Name)end})
+TT:AddSection({loadstring(base64decode("TWVuc2FnZW0="))()})
+local msgI=nil
+TT:AddTextBox({Name=loadstring(base64decode("TWVuc2FnZW0="))(),PlaceholderText=loadstring(base64decode("Li4u"))(),Callback=function(v)msgI=v end})
+TT:AddButton({loadstring(base64decode("RW52aWFyIGNvbW8gQWx2bw=="))(),function()local t=gT()if not t then er(loadstring(base64decode("U2VsZWNpb25lIGFsdm8="))())return end if not msgI or msgI==loadstring(base64decode(""))()then er(loadstring(base64decode("RGlnaXRlIG1zZw=="))())return end fMsg(t,msgI)ok(loadstring(base64decode("TXNnIC0+IA=="))()..t.Name)end})
+local MT=AW:MakeTab({loadstring(base64decode("TWFwYXM="))(),loadstring(base64decode("cmJ4YXNzZXRpZDovLzc3MzM5NjQ1Nzk="))()})
+MT:AddSection({loadstring(base64decode("QmFja3Jvb21z"))()})
+MT:AddParagraph({loadstring(base64decode("QmFja3Jvb21z"))(),loadstring(base64decode("WT0="))()..BY})
+local md=MT:AddDropdown({Name=loadstring(base64decode("UGxheWVy"))(),Options=gNN(),Default=loadstring(base64decode(""))(),Callback=function(v)if v and v~=loadstring(base64decode("TmVuaHVt"))() and v~=loadstring(base64decode(""))()then mt=v else mt=nil end end})
+MT:AddButton({loadstring(base64decode("QXR1YWxpemFy"))(),function()pcall(function()md:Set(gNN())end)end})
+MT:AddButton({loadstring(base64decode("TWUgbGV2YXIgcC8gYmFja3Jvb21z"))(),function()if not workspace:FindFirstChild(loadstring(base64decode("S2FtdWlCYWNrcm9vbXM="))())then cBR()task.wait(0.5)end tpBR(LP)ok(loadstring(base64decode("Vm9jZSBmb2kgcC8gQmFja3Jvb21z"))())end})
+MT:AddButton({loadstring(base64decode("TGV2YXIgcGxheWVyIHAvIGJhY2tyb29tcw=="))(),function()local t=gMT()if not t then er(loadstring(base64decode("U2VsZWNpb25lIHBsYXllcg=="))())return end if not workspace:FindFirstChild(loadstring(base64decode("S2FtdWlCYWNrcm9vbXM="))())then cBR()task.wait(0.5)end tpBR(t)ok(t.Name..loadstring(base64decode("IC0+IEJhY2tyb29tcw=="))())end})
+MT:AddSection({loadstring(base64decode("TWV0ZW9yb3M="))()})
+MT:AddToggle({Name=loadstring(base64decode("Q2h1dmEgZGUgTWV0ZW9yb3M="))(),Default=false,Callback=function(v)if v then local t=gMT()stM(t)ok(loadstring(base64decode("TWV0ZW9yb3MgT04="))())else stopM()er(loadstring(base64decode("TWV0ZW9yb3MgT0ZG"))())end end})
+MT:AddButton({loadstring(base64decode("TGFuY2FyIDEgTWV0ZW9ybw=="))(),function()local t=gMT()local pos if t and t.Character then local hrp=t.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())if hrp then pos=hrp.Position end end if not pos then pos=Vector3.new(0,0,0)end A.spawnM(pos)ok(loadstring(base64decode("TWV0ZW9ybyBsYW5jYWRv"))())end})
+AW:SelectTab(TT)
 end
-local function notify(text,color)
-pcall(function()
-ensN()
-NO=NO+1
-local cl=color or Color3.fromRGB(0,255,0)
-local f=Instance.new(loadstring(base64decode("RnJhbWU="))())
-f.LayoutOrder=NO
-f.Size=UDim2.new(1,0,0,60)
-f.BackgroundColor3=Color3.fromRGB(18,18,18)
-f.BackgroundTransparency=0.05
-f.BorderSizePixel=0
-f.Parent=NC
-local c=Instance.new(loadstring(base64decode("VUlDb3JuZXI="))())
-c.CornerRadius=UDim.new(0,10)
-c.Parent=f
-local st=Instance.new(loadstring(base64decode("VUlTdHJva2U="))())
-st.Color=cl
-st.Thickness=2
-st.Parent=f
-local ac=Instance.new(loadstring(base64decode("RnJhbWU="))())
-ac.Size=UDim2.new(0,4,1,0)
-ac.BackgroundColor3=cl
-ac.BorderSizePixel=0
-ac.Parent=f
-local ac2=Instance.new(loadstring(base64decode("VUlDb3JuZXI="))())
-ac2.CornerRadius=UDim.new(0,10)
-ac2.Parent=ac
-local tl=Instance.new(loadstring(base64decode("VGV4dExhYmVs"))())
-tl.Position=UDim2.new(0,14,0,8)
-tl.Size=UDim2.new(1,-20,0,22)
-tl.BackgroundTransparency=1
-tl.Text=loadstring(base64decode("S2FtdWkgSHVi"))()
-tl.TextColor3=cl
-tl.TextScaled=true
-tl.Font=Enum.Font.GothamBold
-tl.TextXAlignment=Enum.TextXAlignment.Left
-tl.Parent=f
-local cd=Instance.new(loadstring(base64decode("VGV4dExhYmVs"))())
-cd.Position=UDim2.new(0,14,0,30)
-cd.Size=UDim2.new(1,-20,0,24)
-cd.BackgroundTransparency=1
-cd.Text=text
-cd.TextColor3=Color3.fromRGB(230,230,230)
-cd.TextScaled=true
-cd.Font=Enum.Font.Gotham
-cd.TextXAlignment=Enum.TextXAlignment.Left
-cd.Parent=f
-task.delay(5,function()if f and f.Parent then f:Destroy()end end)
+local function buildHub()
+local W=lib:MakeWindow({Title=loadstring(base64decode("S2FtdWkgeCBodWIgdjEuOC4w"))(),SubTitle=loadstring(base64decode("QnJvb2toYXZlbiBUcm9sbA=="))(),SaveFolder=loadstring(base64decode("a2FtdWlfaHViX21haW4="))()})
+W:AddMinimizeButton({Button={Image=loadstring(base64decode("cmJ4YXNzZXRpZDovLzcxMDE0ODczOTczODY5"))(),BackgroundTransparency=0},Corner={CornerRadius=UDim.new(35,1)}})
+local st,sf,sm=nil,nil,nil
+local vE,vC=false,nil
+local fbA,fbC=false,nil
+local tfA,tfC=false,nil
+local cfA,cfT=false,nil
+local pDD,aDD,wDD
+local autoRefreshOn=true
+local function gN()local n={}for _,p in ipairs(P:GetPlayers())do if p~=LP then table.insert(n,p.Name)end end if #n==0 then table.insert(n,loadstring(base64decode("TmVuaHVt"))())end return n end
+local function gWL()local n={}for _,p in ipairs(P:GetPlayers())do if p~=LP then local m=isP(p.Name)andloadstring(base64decode("IFtQXQ=="))()orloadstring(base64decode(""))()table.insert(n,p.Name..m)end end if #n==0 then table.insert(n,loadstring(base64decode("TmVuaHVt"))())end return n end
+local function rP()local n=gN()if pDD then pcall(function()pDD:Set(n)end)end if aDD then pcall(function()aDD:Set(n)end)end if wDD then pcall(function()wDD:Set(gWL())end)end end
+local CT=W:MakeTab({loadstring(base64decode("Q3JlZGl0b3M="))(),loadstring(base64decode("cmJ4YXNzZXRpZDovLzc3MzM5NTU2Njk="))()})
+CT:AddParagraph({loadstring(base64decode("Q3JpYWRvcg=="))(),loadstring(base64decode("dGVzdGVlZWVlZWVlcG91cmFhXzk5Mzkx"))()})
+CT:AddParagraph({loadstring(base64decode("VmVyc2Fv"))(),loadstring(base64decode("djEuOC4w"))()})
+CT:AddParagraph({loadstring(base64decode("QXR1YWxpemFkbw=="))(),loadstring(base64decode("MDkvMTAvMjAyNg=="))()})
+local PT2=W:MakeTab({loadstring(base64decode("UGxheWVy"))(),loadstring(base64decode("cmJ4YXNzZXRpZDovLzc3MzQwNTM0OTU="))()})
+PT2:AddSection({loadstring(base64decode("Sm9nYWRvcmVzIG5vIEh1Yg=="))()})
+local function updatePlayers()
+local n={}
+for _,p in ipairs(P:GetPlayers())do
+if p:GetAttribute(loadstring(base64decode("S2FtdWlIdWJVc2Vy"))())==true then
+local tg=isAdm(p)andloadstring(base64decode("IHthZG1pbn0="))()orloadstring(base64decode("IHt1c2VyfQ=="))()
+table.insert(n,p.Name..tg)
+end
+end
+if #n==0 then table.insert(n,loadstring(base64decode("TmVuaHVt"))())end
+return n
+end
+local pList=PT2:AddDropdown({Name=loadstring(base64decode("UGxheWVycyBubyBIdWI="))(),Options=updatePlayers(),Default=loadstring(base64decode(""))(),Callback=function()end})
+PT2:AddButton({loadstring(base64decode("QXR1YWxpemFyIEFnb3Jh"))(),function()pcall(function()pList:Set(updatePlayers())end)ok(loadstring(base64decode("QXR1YWxpemFkbw=="))())end})
+PT2:AddToggle({Name=loadstring(base64decode("QXV0byBSZWZyZXNo"))(),Default=true,Callback=function(v)autoRefreshOn=v if v then ok(loadstring(base64decode("QXV0byByZWZyZXNoIE9O"))())else er(loadstring(base64decode("QXV0byByZWZyZXNoIE9GRg=="))())end end})
+PT2:AddSection({loadstring(base64decode("VEFH"))()})
+PT2:AddToggle({Name=loadstring(base64decode("TW9zdHJhciBUQUcgZW0gY2ltYQ=="))(),Default=false,Callback=function(v)if v then hTags()ok(loadstring(base64decode("VGFncyBPTg=="))())else rTags()er(loadstring(base64decode("VGFncyBPRkY="))())end end})
+PT2:AddParagraph({loadstring(base64decode("U3VhIFRhZw=="))(),isAdm(LP)andloadstring(base64decode("Vm9jZSBlIHthZG1pbn0="))()orloadstring(base64decode("Vm9jZSBlIHt1c2VyfQ=="))()})
+PT2:AddSection({loadstring(base64decode("RVNQ"))()})
+PT2:AddToggle({Name=loadstring(base64decode("RVNQICh2ZXIgam9nYWRvcmVzKQ=="))(),Default=false,Callback=function(v)if v then startESP()ok(loadstring(base64decode("RVNQIE9O"))())else stopESP()er(loadstring(base64decode("RVNQIE9GRg=="))())end end})
+task.spawn(function()while task.wait(5)do if autoRefreshOn then pcall(function()pList:Set(updatePlayers())end)end end end)
+local TT=W:MakeTab({loadstring(base64decode("VHJvbGw="))(),loadstring(base64decode("cmJ4YXNzZXRpZDovLzYwMjY1NjgxOTg="))()})
+pDD=TT:AddDropdown({Name=loadstring(base64decode("QWx2bw=="))(),Options=gN(),Default=loadstring(base64decode(""))(),Callback=function(v)if v and v~=loadstring(base64decode("TmVuaHVt"))() and v~=loadstring(base64decode(""))()then st=v getgenv().Target=v else st=nil getgenv().Target=nil end end})
+TT:AddButton({loadstring(base64decode("QXR1YWxpemFy"))(),function()rP()end})
+TT:AddToggle({Name=loadstring(base64decode("VmlldyBBbHZv"))(),Default=false,Callback=function(v)vE=v if v then if vC then vC:Disconnect()end vC=R.RenderStepped:Connect(function()if not vE then return end if not st then return end local t=st and P:FindFirstChild(st)if not t or not t.Character or not t.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())then vE=false if vC then vC:Disconnect()vC=nil end return end C.CFrame=CFrame.lookAt(C.CFrame.Position,t.Character.HumanoidRootPart.Position)end)else if vC then vC:Disconnect()vC=nil end end end})
+TT:AddButton({loadstring(base64decode("VFA="))(),function()if not st then return end local t=st and P:FindFirstChild(st)if t and t.Character and t.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())then local r=LP.Character and LP.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())if r then r.CFrame=t.Character.HumanoidRootPart.CFrame end end end})
+TT:AddSection({loadstring(base64decode("V2hpdGVsaXN0"))()})
+wDD=TT:AddDropdown({Name=loadstring(base64decode("QWRkL1JlbW92ZXI="))(),Options=gWL(),Default=loadstring(base64decode(""))(),Callback=function(v)if not v or v==loadstring(base64decode("TmVuaHVt"))()or v==loadstring(base64decode(""))()then return end local r=v:gsub(loadstring(base64decode("ICVbUCVd"))(),loadstring(base64decode(""))())if isP(r)then PR[r]=nil else PR[r]=true end rP()end})
+TT:AddButton({loadstring(base64decode("TGltcGFyIFdM"))(),function()PR={}rP()end})
+local mDD
+TT:AddDropdown({Name=loadstring(base64decode("Rmxpbmc="))(),Options={loadstring(base64decode("RmxpbmcgQmFsbA=="))(),loadstring(base64decode("U29mYQ=="))()},Default=loadstring(base64decode(""))(),Callback=function(v)sf=v if mDD then if v==loadstring(base64decode("RmxpbmcgQmFsbA=="))()then pcall(function()mDD:Set({loadstring(base64decode("UmFwaWRv"))(),loadstring(base64decode("RmFzdCBGbGluZw=="))()})end)else pcall(function()mDD:Set({loadstring(base64decode("bm9tZQ=="))()})end)end end end})
+mDD=TT:AddDropdown({Name=loadstring(base64decode("TWV0b2Rv"))(),Options={},Default=loadstring(base64decode(""))(),Callback=function(v)sm=v end})
+TT:AddToggle({Name=loadstring(base64decode("RXhlY3V0YXIgRmxpbmc="))(),Default=false,Callback=function(v)
+if not sf then return end
+if sf==loadstring(base64decode("RmxpbmcgQmFsbA=="))()then
+fbA=v
+if v then
+task.spawn(function()
+local B=gB()
+if not B then return end
+local bv=Instance.new(loadstring(base64decode("Qm9keVZlbG9jaXR5"))())
+bv.Velocity=Vector3.new(9e8,9e8,9e8)
+bv.MaxForce=Vector3.new(math.huge,math.huge,math.huge)
+bv.Parent=B
+local si=(sm==loadstring(base64decode("RmFzdCBGbGluZw=="))())and 1 or 2
+local ss=(sm==loadstring(base64decode("RmFzdCBGbGluZw=="))())and 240 or 200
+local ci,ls,sa=1,tick(),0
+if fbC then fbC:Disconnect()end
+fbC=R.Heartbeat:Connect(function()
+if not fbA then return end
+protS()
+local al={}
+for _,p in ipairs(P:GetPlayers())do
+if p~=LP and p.Character and p.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))()) and not isP(p.Name) then table.insert(al,p)end
+end
+if #al==0 then return end
+local nw=tick()
+if nw-ls>=si then ci=ci+1 if ci>#al then ci=1 end ls=nw sa=0 end
+if ci>#al then ci=1 end
+local t=al[ci]
+if t and t.Character and t.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))()) then
+sa=sa+math.rad(ss)
+B.CFrame=t.Character.HumanoidRootPart.CFrame*CFrame.Angles(0,sa,0)
+end
 end)
+end)
+else
+if fbC then fbC:Disconnect()fbC=nil end
+protS()cTl()
 end
-local function ok(t)notify(t,Color3.fromRGB(0,200,100))end
-local function er(t)notify(t,Color3.fromRGB(220,60,60))end
-local function inf(t)notify(t,Color3.fromRGB(60,140,220))end
-local function cTl()local r=RS.RE and RS.RE:FindFirstChild(loadstring(base64decode("MUNsZWExclRvb2wxcw=="))())if r then pcall(function()r:FireServer(loadstring(base64decode("Q2xlYXJBbGxUb29scw=="))())end)end end
-local function protS()
+elseif sf==loadstring(base64decode("U29mYQ=="))()then
+if v then
+if sm~=loadstring(base64decode("bm9tZQ=="))()then return end
+cfA=true
+cfT=task.spawn(function()
+local pr=RS.RE and RS.RE:FindFirstChild(loadstring(base64decode("MVRvbzFs"))())
+local cr=RS.RE and RS.RE:FindFirstChild(loadstring(base64decode("MUNsZWExclRvb2wxcw=="))())
+if cr then pcall(function()cr:FireServer(loadstring(base64decode("Q2xlYXJBbGxUb29scw=="))())end)end
+task.wait(0.3)
+if pr then pcall(function()pr:InvokeServer(loadstring(base64decode("UGlja2luZ1Rvb2xz"))(),loadstring(base64decode("Q291Y2g="))())end)end
+task.wait(0.5)
+local ch=LP.Backpack:FindFirstChild(loadstring(base64decode("Q291Y2g="))())or LP.Character:FindFirstChild(loadstring(base64decode("Q291Y2g="))())
+if ch then pcall(function()ch.Parent=LP.Character end)end
+task.wait(0.3)
+pcall(function()A.VIM:SendKeyEvent(true,Enum.KeyCode.F,false,game)end)
+task.wait(0.5)
 local c=LP.Character
 if not c then return end
 local r=c:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
 if not r then return end
-for _,v in ipairs(r:GetChildren())do
-if v:IsA(loadstring(base64decode("Qm9keVZlbG9jaXR5"))())or v:IsA(loadstring(base64decode("Qm9keVBvc2l0aW9u"))())or v:IsA(loadstring(base64decode("Qm9keUd5cm8="))())or v:IsA(loadstring(base64decode("QWxpZ25Qb3NpdGlvbg=="))())or v:IsA(loadstring(base64decode("QWxpZ25PcmllbnRhdGlvbg=="))())or v:IsA(loadstring(base64decode("VG9ycXVl"))())then
-if v.Name~=loadstring(base64decode("S2FtdWlLZWVwQWxpdmU="))()then pcall(function()v:Destroy()end)end
-end
-end
-if r.Position.Y<-50 then r.CFrame=CFrame.new(r.Position.X,50,r.Position.Z)end
-end
-local function gB()
-local w=workspace:FindFirstChild(loadstring(base64decode("V29ya3NwYWNlQ29t"))())
-if not w then return nil end
-local bf=w:FindFirstChild(loadstring(base64decode("MDAxX1NvY2NlckJhbGxz"))())
-if not bf then return nil end
-local bp=LP.Backpack
-if not bp:FindFirstChild(loadstring(base64decode("U29jY2VyQmFsbA=="))())then local r=RS.RE and RS.RE:FindFirstChild(loadstring(base64decode("MVRvbzFs"))())if r then pcall(function()r:InvokeServer(loadstring(base64decode("UGlja2luZ1Rvb2xz"))(),loadstring(base64decode("U29jY2VyQmFsbA=="))())end)end end
-local wt=0
-while not bp:FindFirstChild(loadstring(base64decode("U29jY2VyQmFsbA=="))())and wt<5 do task.wait(0.1)wt=wt+0.1 end
-if not bp:FindFirstChild(loadstring(base64decode("U29jY2VyQmFsbA=="))())then return nil end
-bp.SoccerBall.Parent=LP.Character
-wt=0
-while not bf:FindFirstChild(loadstring(base64decode("U29jY2Vy"))()..LP.Name)and wt<5 do task.wait(0.1)wt=wt+0.1 end
-local B=bf:FindFirstChild(loadstring(base64decode("U29jY2Vy"))()..LP.Name)
-if not B then return nil end
-B.CanCollide=false
-B.Massless=true
-B.CustomPhysicalProperties=PhysicalProperties.new(0.001,0,0,0,0)
-return B
-end
-local function cBR()
-local e=workspace:FindFirstChild(loadstring(base64decode("S2FtdWlCYWNrcm9vbXM="))())
-if e then e:Destroy()end
-local f=Instance.new(loadstring(base64decode("Rm9sZGVy"))())
-f.Name=loadstring(base64decode("S2FtdWlCYWNrcm9vbXM="))()
-f.Parent=workspace
-local o=Vector3.new(0,BY,0)
-local gs,cs,wh,wt=8,40,16,2
-local h,v={},{}
-for csgmtADo=1,gs do h[csgmtADo]={}v[csgmtADo]={}for z=1,gs do h[csgmtADo][z]=false v[csgmtADo][z]=false end end
-for csgmtADo=1,gs do h[csgmtADo][1]=true h[csgmtADo][gs]=true v[csgmtADo][1]=true v[csgmtADo][gs]=true end
-for z=1,gs do h[1][z]=true h[gs][z]=true v[1][z]=true v[gs][z]=true end
-for csgmtADo=1,gs-1 do for z=1,gs-1 do
-if math.random()>0.35 then h[csgmtADo][z]=true end
-if math.random()>0.35 then v[csgmtADo][z]=true end
-end end
-for csgmtADo=1,gs do for z=1,gs do
-local fl=Instance.new(loadstring(base64decode("UGFydA=="))())
-fl.Name=loadstring(base64decode("Rmxvb3I="))()
-fl.Size=Vector3.new(cs,1,cs)
-fl.Position=o+Vector3.new((csgmtADo-gs/2-0.5)*cs,0,(z-gs/2-0.5)*cs)
-fl.Anchored=true
-fl.BrickColor=BrickColor.new(loadstring(base64decode("Q29vbCB5ZWxsb3c="))())
-fl.Material=Enum.Material.Fabric
-fl.Parent=f
-end end
-local ce=Instance.new(loadstring(base64decode("UGFydA=="))())
-ce.Name=loadstring(base64decode("Q2VpbGluZw=="))()
-ce.Size=Vector3.new(gs*cs,1,gs*cs)
-ce.Position=o+Vector3.new(0,wh,0)
-ce.Anchored=true
-ce.BrickColor=BrickColor.new(loadstring(base64decode("Q29vbCB5ZWxsb3c="))())
-ce.Material=Enum.Material.SmoothPlastic
-ce.Parent=f
-for csgmtADo=1,gs do for z=1,gs do
-if h[csgmtADo][z]then local w=Instance.new(loadstring(base64decode("UGFydA=="))())w.Name=loadstring(base64decode("V2FsbA=="))()w.Size=Vector3.new(cs+wt,wh,wt)w.Position=o+Vector3.new((csgmtADo-gs/2-0.5)*cs,wh/2,(z-gs/2)*cs)w.Anchored=true w.BrickColor=BrickColor.new(loadstring(base64decode("Q29vbCB5ZWxsb3c="))())w.Material=Enum.Material.SmoothPlastic w.Parent=f end
-if v[csgmtADo][z]then local w=Instance.new(loadstring(base64decode("UGFydA=="))())w.Name=loadstring(base64decode("V2FsbA=="))()w.Size=Vector3.new(wt,wh,cs+wt)w.Position=o+Vector3.new((csgmtADo-gs/2)*cs,wh/2,(z-gs/2-0.5)*cs)w.Anchored=true w.BrickColor=BrickColor.new(loadstring(base64decode("Q29vbCB5ZWxsb3c="))())w.Material=Enum.Material.SmoothPlastic w.Parent=f end
-end end
-for i=1,12 do
-local lp=Instance.new(loadstring(base64decode("UGFydA=="))())
-lp.Name=loadstring(base64decode("TGFtcA=="))()
-lp.Size=Vector3.new(8,0.3,2)
-lp.Position=o+Vector3.new(math.random(-gs*18,gs*18),wh-1.5,math.random(-gs*18,gs*18))
-lp.Anchored=true
-lp.CanCollide=false
-lp.Material=Enum.Material.Neon
-lp.BrickColor=BrickColor.new(loadstring(base64decode("VG9vdGhwYXN0ZQ=="))())
-lp.Parent=f
-local pl=Instance.new(loadstring(base64decode("UG9pbnRMaWdodA=="))())
-pl.Brightness=3
-pl.Range=60
-pl.Color=Color3.fromRGB(255,250,180)
-pl.Parent=lp
-end
-end
-local function tpBR(p)
-if not p or not p.Character then return end
-task.spawn(function()
-for i=1,50 do
-local c=p.Character
-if not c then break end
-local hrp=c:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
-if hrp then hrp.CFrame=CFrame.new(0,BY+8,0)end
-task.wait(0.1)
-end
-end)
-end
-local mR=false
-local function spawnM(pos)
-local m=Instance.new(loadstring(base64decode("UGFydA=="))())
-m.Name=loadstring(base64decode("S2FtdWlNZXRlb3I="))()
-m.Shape=Enum.PartType.Ball
-m.Size=Vector3.new(8,8,8)
-m.Material=Enum.Material.Neon
-m.BrickColor=BrickColor.new(loadstring(base64decode("UmVhbGx5IHJlZA=="))())
-m.CanCollide=true
-m.Position=Vector3.new(pos.X+math.random(-200,200),pos.Y+400,pos.Z+math.random(-200,200))
-m.Parent=workspace
-local fi=Instance.new(loadstring(base64decode("RmlyZQ=="))())
-fi.Heat=50
-fi.Size=20
-fi.Parent=m
-local li=Instance.new(loadstring(base64decode("UG9pbnRMaWdodA=="))())
-li.Brightness=5
-li.Range=40
-li.Color=Color3.fromRGB(255,100,0)
-li.Parent=m
-local bv=Instance.new(loadstring(base64decode("Qm9keVZlbG9jaXR5"))())
-bv.Velocity=Vector3.new(math.random(-50,50),-300,math.random(-50,50))
-bv.MaxForce=Vector3.new(math.huge,math.huge,math.huge)
-bv.Parent=m
-task.delay(8,function()if m and m.Parent then m:Destroy()end end)
-m.Touched:Connect(function()
-if m:GetAttribute(loadstring(base64decode("RQ=="))())then return end
-m:SetAttribute(loadstring(base64decode("RQ=="))(),true)
-local ex=Instance.new(loadstring(base64decode("RXhwbG9zaW9u"))())
-ex.Position=m.Position
-ex.BlastRadius=20
-ex.BlastPressure=50000
-ex.Parent=workspace
-if m.Parent then m:Destroy()end
-end)
-end
-local function stM(t)
-if mR then return end
-mR=true
-task.spawn(function()
-while mR do
-local pos
+local sp,to=0,0
+local sd,fp=false,0
+while cfA do
+local cc=LP.Character
+if not cc then cfA=false break end
+local cr2=cc:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
+if not cr2 then cfA=false break end
+local t=st and P:FindFirstChild(st)
 if t and t.Character then
-local h=t.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
-if h then pos=h.Position end
+local tr=t.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
+local th=t.Character:FindFirstChildOfClass(loadstring(base64decode("SHVtYW5vaWQ="))())
+if tr and th then
+sp=sp+math.rad(180)
+to=to+0.08
+local yo=math.sin(to*1.5)*1.5-1.5
+if not sd then
+pcall(function()cr2.CFrame=tr.CFrame*CFrame.new(math.cos(sp)*2,yo,math.sin(sp)*2)*CFrame.Angles(math.rad(to*300),sp,0)end)
+if th.Sit then sd=true fp=0 end
+else
+if fp==0 then
+pcall(function()local ex=tr:FindFirstChild(loadstring(base64decode("S2FtdWlGbGluZ1ZlbA=="))())if ex then ex:Destroy()end local bv=Instance.new(loadstring(base64decode("Qm9keVZlbG9jaXR5"))())bv.Name=loadstring(base64decode("S2FtdWlGbGluZ1ZlbA=="))()bv.Velocity=Vector3.new(10000,500000,10000)bv.MaxForce=Vector3.new(math.huge,math.huge,math.huge)bv.Parent=tr end)
+fp=1
 end
-if not pos then pos=Vector3.new(math.random(-300,300),100,math.random(-300,300))end
-spawnM(pos)
-task.wait(0.5)
+pcall(function()cr2.CFrame=tr.CFrame*CFrame.new(math.cos(sp)*2,yo,math.sin(sp)*2)*CFrame.Angles(math.rad(to*300),sp,0)end)
 end
+end
+end
+task.wait()
+end
+if cr then pcall(function()cr:FireServer(loadstring(base64decode("Q2xlYXJBbGxUb29scw=="))())end)end
 end)
-end
-local function stopM()
-mR=false
-for _,o in ipairs(workspace:GetChildren())do
-if o.Name==loadstring(base64decode("S2FtdWlNZXRlb3I="))()then o:Destroy()end
-end
-end
-local function crP(t)
-if not t then return end
-local RE=RS:FindFirstChild(loadstring(base64decode("UkU="))())
-if not RE then return end
-task.spawn(function()for i=1,500 do local r=RE:FindFirstChild(loadstring(base64decode("MVBsYXllMXJUcmlnZ2UxckV2ZW4xdA=="))())if r then pcall(function()r:FireServer(string.rep(loadstring(base64decode("QQ=="))(),10000),t,string.rep(loadstring(base64decode("Qg=="))(),10000))end)end if i%50==0 then task.wait()end end end)
-task.spawn(function()for i=1,200 do if t.Character then local h=t.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())if h then h.CFrame=CFrame.new(math.random(-10000,10000),math.random(-10000,10000),math.random(-10000,10000))end end task.wait(0.01)end end)
-end
-local function fMsg(t,msg)
-if not t or not msg or msg==loadstring(base64decode(""))()then return end
-local RE=RS:FindFirstChild(loadstring(base64decode("UkU="))())
-if not RE then return end
-for _,rn in ipairs({loadstring(base64decode("MUNoYTF0"))(),loadstring(base64decode("MUNoYTF0RXZlbjF0"))(),loadstring(base64decode("MVNlMW5kTWVzMXNhZ2U="))(),loadstring(base64decode("MU1lczFzYWdl"))(),loadstring(base64decode("MVJQQ2hhMXQ="))()})do
-local r=RE:FindFirstChild(rn)
-if r then pcall(function()r:FireServer(msg,t)end)pcall(function()r:FireServer(t,msg)end)end
+else
+cfA=false
+if cfT then pcall(function()task.cancel(cfT)end)cfT=nil end
+local c=LP.Character
+if c then
+local r=c:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
+if r then
+r.CFrame=CFrame.new(r.Position.X,1500,r.Position.Z)
+task.spawn(function()local bv=Instance.new(loadstring(base64decode("Qm9keVZlbG9jaXR5"))())bv.Velocity=Vector3.new(0,300,0)bv.MaxForce=Vector3.new(math.huge,math.huge,math.huge)bv.Parent=r task.wait(2)if bv and bv.Parent then bv:Destroy()end end)
+ok(loadstring(base64decode("Vm9jZSB2b291IHBybyBjZXUh"))())
 end
 end
-local function aTag(p)
-if not p then return end
-local c=p.Character
-if not c then return end
-local h=c:FindFirstChild(loadstring(base64decode("SGVhZA=="))())
-if not h then return end
-if p:GetAttribute(loadstring(base64decode("S2FtdWlIdWJVc2Vy"))())~=true then return end
-local o=h:FindFirstChild(loadstring(base64decode("S2FtdWlUYWc="))())
-if o then o:Destroy()end
-local a=isAdm(p)
-local bb=Instance.new(loadstring(base64decode("QmlsbGJvYXJkR3Vp"))())
-bb.Name=loadstring(base64decode("S2FtdWlUYWc="))()
-bb.Size=UDim2.new(0,150,0,28)
-bb.StudsOffset=Vector3.new(0,2.5,0)
-bb.AlwaysOnTop=true
-bb.Parent=h
-local fr=Instance.new(loadstring(base64decode("RnJhbWU="))())
-fr.Size=UDim2.new(1,0,1,0)
-fr.BackgroundColor3=Color3.fromRGB(0,0,0)
-fr.BorderSizePixel=0
-fr.Parent=bb
-local fc=Instance.new(loadstring(base64decode("VUlDb3JuZXI="))())
-fc.CornerRadius=UDim.new(0,6)
-fc.Parent=fr
-local fs=Instance.new(loadstring(base64decode("VUlTdHJva2U="))())
-fs.Color=Color3.fromRGB(255,255,255)
-fs.Thickness=2
-fs.Parent=fr
-local lb=Instance.new(loadstring(base64decode("VGV4dExhYmVs"))())
-lb.Size=UDim2.new(1,0,1,0)
-lb.BackgroundTransparency=1
-lb.Text=a andloadstring(base64decode("e2FkbWlufQ=="))()orloadstring(base64decode("e3VzZXJ9"))()
-lb.TextColor3=a and Color3.fromRGB(255,80,80)or Color3.fromRGB(255,255,255)
-lb.TextScaled=true
-lb.Font=Enum.Font.GothamBold
-lb.Parent=fr
-end
-local function hTags()
-for _,p in ipairs(P:GetPlayers())do aTag(p)end
-P.PlayerAdded:Connect(function(p)
-p.CharacterAdded:Connect(function()task.wait(1.5)aTag(p)end)
-task.wait(2)
-aTag(p)
-end)
-end
-local function rTags()
-for _,p in ipairs(P:GetPlayers())do
-if p.Character then
-local h=p.Character:FindFirstChild(loadstring(base64decode("SGVhZA=="))())
-if h then local t=h:FindFirstChild(loadstring(base64decode("S2FtdWlUYWc="))())if t then t:Destroy()end end
+task.wait(0.3)
+protS()cTl()
 end
 end
-end
-local espOn=false
-local espConns={}
-local function createESP(p)
-if not p or p==LP or not p.Character then return end
-local h=p.Character:FindFirstChild(loadstring(base64decode("SGVhZA=="))())
-if not h then return end
-if h:FindFirstChild(loadstring(base64decode("S2FtdWlFU1A="))())then return end
-local bb=Instance.new(loadstring(base64decode("QmlsbGJvYXJkR3Vp"))())
-bb.Name=loadstring(base64decode("S2FtdWlFU1A="))()
-bb.Size=UDim2.new(0,200,0,50)
-bb.StudsOffset=Vector3.new(0,3,0)
-bb.AlwaysOnTop=true
-bb.Parent=h
-local fr=Instance.new(loadstring(base64decode("RnJhbWU="))())
-fr.Size=UDim2.new(1,0,1,0)
-fr.BackgroundTransparency=1
-fr.Parent=bb
-local nm=Instance.new(loadstring(base64decode("VGV4dExhYmVs"))())
-nm.Size=UDim2.new(1,0,0.5,0)
-nm.BackgroundTransparency=1
-nm.Text=p.Name
-nm.TextColor3=Color3.fromRGB(255,255,255)
-nm.TextScaled=true
-nm.TextStrokeTransparency=0
-nm.TextStrokeColor3=Color3.fromRGB(0,0,0)
-nm.Font=Enum.Font.GothamBold
-nm.Parent=fr
-local dst=Instance.new(loadstring(base64decode("VGV4dExhYmVs"))())
-dst.Position=UDim2.new(0,0,0.5,0)
-dst.Size=UDim2.new(1,0,0.5,0)
-dst.BackgroundTransparency=1
-dst.Text=loadstring(base64decode("MCBzdHVkcw=="))()
-dst.TextColor3=Color3.fromRGB(0,255,100)
-dst.TextScaled=true
-dst.TextStrokeTransparency=0
-dst.TextStrokeColor3=Color3.fromRGB(0,0,0)
-dst.Font=Enum.Font.GothamBold
-dst.Parent=fr
-local conn=R.Heartbeat:Connect(function()
-if not espOn then return end
-if not p.Character or not p.Character:FindFirstChild(loadstring(base64decode("SGVhZA=="))())or not p.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())then return end
-if not LP.Character or not LP.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())then return end
-local d=(p.Character.HumanoidRootPart.Position-LP.Character.HumanoidRootPart.Position).Magnitude
-dst.Text=math.floor(d)..loadstring(base64decode("IHN0dWRz"))()
-end)
-table.insert(espConns,conn)
-end
-local function startESP()
-espOn=true
-for _,p in ipairs(P:GetPlayers())do createESP(p)end
-table.insert(espConns,P.PlayerAdded:Connect(function(p)
-p.CharacterAdded:Connect(function()task.wait(1.5)if espOn then createESP(p)end end)
-end))
-end
-local function stopESP()
-espOn=false
-for _,c in ipairs(espConns)do pcall(function()c:Disconnect()end)end
-espConns={}
-for _,p in ipairs(P:GetPlayers())do
-if p.Character and p.Character:FindFirstChild(loadstring(base64decode("SGVhZA=="))())then
-local e=p.Character.Head:FindFirstChild(loadstring(base64decode("S2FtdWlFU1A="))())
-if e then e:Destroy()end
-end
-end
-end
-local antiLagOn=false
-local antiLagConns={}
-local function startAntiLag()
-antiLagOn=true
-local function process()
-if not antiLagOn then return end
-for _,obj in ipairs(workspace:GetDescendants())do
-if obj:IsA(loadstring(base64decode("UGFydGljbGVFbWl0dGVy"))())or obj:IsA(loadstring(base64decode("VHJhaWw="))())or obj:IsA(loadstring(base64decode("U21va2U="))())or obj:IsA(loadstring(base64decode("RmlyZQ=="))())or obj:IsA(loadstring(base64decode("U3BhcmtsZXM="))())then
-pcall(function()obj.Enabled=false end)
-end
-end
-pcall(function()
-game.Lighting.GlobalShadows=false
-game.Lighting.FogEnd=100000
-game.Lighting.Brightness=2
-end)
-end
-process()
-table.insert(antiLagConns,workspace.DescendantAdded:Connect(function(obj)
-if not antiLagOn then return end
-if obj:IsA(loadstring(base64decode("UGFydGljbGVFbWl0dGVy"))())or obj:IsA(loadstring(base64decode("VHJhaWw="))())or obj:IsA(loadstring(base64decode("RmlyZQ=="))())or obj:IsA(loadstring(base64decode("U21va2U="))())or obj:IsA(loadstring(base64decode("U3BhcmtsZXM="))())then
-pcall(function()obj.Enabled=false end)
-end
-end))
-pcall(function()settings().Rendering.QualityLevel=1 end)
-end
-local function stopAntiLag()
-antiLagOn=false
-for _,c in ipairs(antiLagConns)do pcall(function()c:Disconnect()end)end
-antiLagConns={}
-pcall(function()settings().Rendering.QualityLevel=10 end)
-end
-local function setupAutoRejoin()
-local sj=game.JobId
-local sp=game.PlaceId
-LP.AncestryChanged:Connect(function()
-if not LP.Parent then
-pcall(function()TS:TeleportToPlaceInstance(sp,sj,LP)end)
-end
-end)
-task.spawn(function()
-while tru
+end})
+TT:AddToggle({Name=loadstring(base64decode("VG91Y2ggQmFsbA=="))(),Default=false,Callback=function(v)tfA=v if v then task.spawn(function()local B=gB()if not B then return end if B:FindFirstChildOfClass(loadstring(base64decode("Qm9keVZlbG9jaXR5"))())then B:FindFirstChildOfClass(loadstring(base64decode("Qm9keVZlbG9jaXR5"))()):Destroy()end local a=0 tfC=R.Heartbeat:Connect(function()if not tfA then return end protS()local c=LP.Character if not c or not c:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())then tfA=false if tfC then tfC:Disconnect()tfC=nil end cTl()return end local tp=c:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())if tp and B and B.Parent then a=a+math.rad(150)B.CFrame=tp.CFrame*CFrame.Angles(0,a,0)end end)end)else if tfC then tfC:Disconnect()tfC=nil end protS()cTl()end end})
+local IT=W:MakeTab({loadstring(base64decode("SXRlbQ=="))(),loadstring(base64decode("cmJ4YXNzZXRpZDovLzcwNzc0NTIyODk="))()})
+IT:AddParagraph({loadstring(base64decode("SXRlbSBQYWdv"))(),loadstring(base64decode("V2FyZGVu"))()})
+local si=nil
+IT:AddDropdown({Name=loadstring(base64decode("SXRlbQ=="))(),Options={loadstring(base64decode("V2FyZGVu"))()},Default=loadstring(base64decode(""))(),Callback=function(v)si=v end})
+IT:AddButton({loadstring(base64decode("UGVnYXI="))(),function()if si==loadstring(base64decode("V2FyZGVu"))()then local r=RS.RE and RS.RE:FindFirstChild(loadstring(base64decode("MVBsYXllMXJUcmlnZ2UxckV2ZW4xdA=="))())if r then pcall(function()r:FireServer(loadstring(base64decode("QWNjZXB0ZWRUb29sVG9TZXJ2ZXI="))(),loadstring(base64decode("V2FyZGVuUGlzdG9s"))(),LP)end)end end end})
+local AV=W:MakeTab({loadstring(base64decode("QXZhdGFy"))(),loadstring(base64decode("cmJ4YXNzZXRpZDovLzc3MzM5NTU2Njk="))()})
+AV:A
